@@ -16,6 +16,7 @@ module.exports = {
   plugins: ["jest"],
   rules: {
     "no-console": "off",
+    "no-unused-vars": ["error", { varsIgnorePattern: "^_" }],
     "no-shadow": "off",
     "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
   },
