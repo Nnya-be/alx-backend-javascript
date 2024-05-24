@@ -1,16 +1,16 @@
 module.exports = function cleanSet(set, startString) {
   if (
-    !set ||
-    !(set instanceof Set) ||
-    typeof startString !== "string" ||
-    startString.length === 0
+    !set
+    || !(set instanceof Set)
+    || typeof startString !== 'string'
+    || startString.length === 0
   ) {
-    return "";
+    return '';
   }
 
   const result = [];
   for (const value of set) {
-    if (typeof value === "string" && value.startsWith(startString)) {
+    if (typeof value === 'string' && value.startsWith(startString)) {
       const subVal = value.slice(startString.length);
 
       if (subVal && subVal !== value) {
@@ -19,5 +19,5 @@ module.exports = function cleanSet(set, startString) {
     }
   }
 
-  return result.join("-");
+  return result.join('-');
 };
