@@ -1,14 +1,23 @@
 module.exports = function cleanSet(set, startString) {
-  if (typeof startString !== 'string' || startString.length === 0) {
-    return '';
+  if (
+    !set ||
+    !(set instanceof Set) ||
+    typeof startString !== "string" ||
+    startString.length === 0
+  ) {
+    return "";
   }
 
   const result = [];
   for (const value of set) {
-    if (value.startsWith(startString)) {
-      result.push(value.slice(startString.length));
+    if (typeof value === "string" && value.startsWith(startString)) {
+      const subVal = value.slice(startString.length);
+
+      if (subVal && subVal !== value) {
+        result.push(subVal);
+      }
     }
   }
 
-  return result.join('-');
+  return result.join("-");
 };
